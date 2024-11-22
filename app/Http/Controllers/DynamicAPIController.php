@@ -10,7 +10,7 @@ class DynamicAPIController extends Controller
 {
     public function index($table)
     {
-        if (!Schema::hasTable($table.'s')) {
+        if (!Schema::hasTable($table)) {
             return response()->json(['error' => 'Table not found '.$table], 404);
         }
 
@@ -20,7 +20,7 @@ class DynamicAPIController extends Controller
 
     public function show($table, $id)
     {
-        if (!Schema::hasTable($table.'s')) {
+        if (!Schema::hasTable($table)) {
             return response()->json(['error' => 'Table not found'], 404);
         }
 
@@ -36,7 +36,7 @@ class DynamicAPIController extends Controller
 
     public function store(Request $request, $table)
     {
-        if (!Schema::hasTable($table.'s')) {
+        if (!Schema::hasTable($table)) {
             return response()->json(['error' => 'Table not found'], 404);
         }
 
@@ -53,7 +53,7 @@ class DynamicAPIController extends Controller
 
     public function update(Request $request, $table, $id)
     {
-        if (!Schema::hasTable($table.'s')) {
+        if (!Schema::hasTable($table)) {
             return response()->json(['error' => 'Table not found'], 404);
         }
 
@@ -76,7 +76,7 @@ class DynamicAPIController extends Controller
 
     public function destroy($table, $id)
     {
-        if (!Schema::hasTable($table.'s')) {
+        if (!Schema::hasTable($table)) {
             return response()->json(['error' => 'Table not found'], 404);
         }
 
