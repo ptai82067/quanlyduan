@@ -20,8 +20,7 @@ class RecordController extends Controller
             }
 
             // Lấy tất cả các bản ghi
-            $records = $modelClass::all();
-            $modelClass::all()->toArray();
+            $records = $modelClass::with($this->getRelations($modelClass))->get();
             return response()->json($records);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 404);
@@ -40,13 +39,14 @@ class RecordController extends Controller
             }
 
             // Tìm bản ghi theo ID
-            $record = $modelClass::find($id);
+            $record = $modelClass::with($this->getRelations($modelClass))->find($id);
 
             if (!$record) {
                 return response()->json(['error' => 'Record not found'], 404);
             }
             event(new RecordUpdate($table, 'show', $record));
             return response()->json($record);
+            // return response()->json($this->transformRecord($record));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 404);
         }
@@ -158,4 +158,45 @@ class RecordController extends Controller
         $modelName = ucfirst(Str::singular($table));
         return "App\\Models\\$modelName";
     }
+    // private function getRelations($modelClass)
+    // {
+    //     if ($modelClass == 'App\Models\DoAn') {
+    //         return ['taiLieu'];  // Chỉ tải quan hệ 'taiLieu' cho bảng DoAn
+    //     }
+    // // Danh sách các phương thức quan hệ (nếu có)
+    //     if (method_exists($modelClass, 'relationsToLoad')) {
+    //         return $modelClass::relationsToLoad();
+    //     }
+    //     return []; // Không có quan hệ nếu không được khai báo
+    // }
+
+
+    private function transformRecord($record)
+    {
+        // Chuyển đổi bản ghi thành mảng để điều chỉnh cấu trúc dữ liệu
+        return $record->toArray();
+    }
+
+    private function getRelations($modelClass)
+    {
+        // Kiểm tra model có tồn tại hay không
+        if (!class_exists($modelClass)) {
+            throw new \Exception("Model class $modelClass does not exist.");
+        }
+
+        // Kiểm tra model có định nghĩa phương thức `relationsToLoad`
+        if (method_exists($modelClass, 'relationsToLoad')) {
+            return $modelClass::relationsToLoad();
+        }
+
+        // Xử lý cấu hình quan hệ cụ thể cho từng model
+        $relationsMap = [
+            'App\Models\DoAn' => ['taiLieu'], // Tải 'taiLieu' cho model DoAn
+            // Thêm các model khác tại đây nếu cần
+        ];
+
+        // Trả về quan hệ nếu model tồn tại trong danh sách ánh xạ
+        return $relationsMap[$modelClass] ?? [];
+    }
+
 }
