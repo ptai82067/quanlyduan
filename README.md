@@ -5,13 +5,14 @@ Xây dựng RestFul API bằng framework Laravel vô cùng mạnh mẽ. Các l�
 
 # Công cụ
 - [Railway](https://railway.app/) để host src code
-- freesqldatabase.com để host database
-- pusher.com để gửi thông báo khi database có thay đổi
+- https://freesqldatabase.com để host database
+- https://pusher.com để gửi thông báo khi database có thay đổi
 ## Mô tả
 - quanlyduan-production.up.railway.app/api/{table}
 - {table} = [BaiViet, BinhLuan, BoMon, ChamDiem, DanhMucBaiViet, DoAn, GiangVien, HoSoBaoVe,Khoa,LichBaoVe, Lop, NoiDungThucHien, PhanConDoAn, SinhVien, TaiKhoan, TaiLieu, ThongBao, ThongKeBaiViet, TienDo]
 ## Demo API
-https://quanlyduan-production.up.railway.app/api/DoAn![enter image description here](https://files.catbox.moe/jyc2qi.png)
+https://quanlyduan-production.up.railway.app/api/DoAn
+![enter image description here](https://files.catbox.moe/jyc2qi.png)
 *Real time*
 ![enter image description here](https://files.catbox.moe/95o559.png)
 
