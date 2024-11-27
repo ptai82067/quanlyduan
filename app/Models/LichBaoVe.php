@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LichBaoVe extends Model
 {
     // Tên bảng trong cơ sở dữ liệu
-    protected $table = 'LichBaoVe';
+    protected $table = 'lichbaove';
     protected $primaryKey = 'MaLichBaoVe';
 
     // Các thuộc tính có thể gán giá trị hàng loạt

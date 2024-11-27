@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ThongKeBaiViet extends Model
 {
     // Tên bảng trong cơ sở dữ liệu
-    protected $table = 'ThongKeBaiViet';
+    protected $table = 'thongkebaiviet';
     protected $primaryKey = 'MaThongKe';
 
     // Các thuộc tính có thể gán giá trị hàng loạt

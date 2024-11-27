@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     // Tên bảng tương ứng trong cơ sở dữ liệu
-    protected $table = 'Users';
+    protected $table = 'users';
 
     // Khóa chính của bảng
     protected $primaryKey = 'id';

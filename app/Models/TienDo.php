@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TienDo extends Model
 {
     // Tên bảng trong cơ sở dữ liệu
-    protected $table = 'TienDo';
+    protected $table = 'tiendo';
     protected $primaryKey = 'MaTienDo';
 
     // Các thuộc tính có thể gán giá trị hàng loạt
