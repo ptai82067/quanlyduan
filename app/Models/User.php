@@ -6,24 +6,69 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $table = 'users';
+    // Tên bảng tương ứng trong cơ sở dữ liệu
+    protected $table = 'Users';
+
+    // Khóa chính của bảng
+    protected $primaryKey = 'id';
+
+    // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [
-    
-        'name',
-        'email',
-        'password',
-        'role_id'
+        'MaNguoiDung',
+        'Username',
+        'PasswordHash', // Chỉnh sửa tên cho chính xác với trường trong cơ sở dữ liệu
+        'RoleID',
     ];
-    public $timestamps = false; // Tắt timestamps
+
+    // Tắt timestamps nếu không sử dụng `created_at` và `updated_at`
+    public $timestamps = false;
+
+    /**
+     * Quan hệ với bảng Role.
+     * Một người dùng thuộc về một vai trò.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'RoleID');
+    }
+
+    /**
+     * Quy tắc xác thực khi thêm hoặc cập nhật dữ liệu
+     */
     public static function getValidationRules()
     {
         return [
-          
-            'name' => 'required|string|max:191', // name không thể trống, là chuỗi và không quá 191 ký tự
-            'email' => 'required|email|unique:users,email|max:191', // email phải hợp lệ, duy nhất trong bảng 'users'
-            'password' => 'required|string|min:8', // password không thể trống, là chuỗi và tối thiểu 8 ký tự
-            'role_id' => 'required|exists:roles,id|integer',
+            'MaNguoiDung' => 'required|integer',            // Mã người dùng bắt buộc, là số nguyên
+            'Username' => 'required|string|max:255',        // Username không được rỗng, dạng chuỗi, tối đa 255 ký tự
+            'PasswordHash' => 'required|string|max:255',    // Mật khẩu đã mã hóa không được rỗng, dạng chuỗi, tối đa 255 ký tự
+            'RoleID' => 'required|exists:Roles,RoleID',     // Vai trò bắt buộc phải tồn tại trong bảng Roles
         ];
     }
-}
 
+    /**
+     * Quan hệ liên quan được load mặc định.
+     */
+    public static function relationsToLoad()
+    {
+        return ['role']; // Tự động load thông tin vai trò khi truy vấn người dùng
+    }
+
+    /**
+     * Phương thức mã hóa mật khẩu khi tạo mới hoặc cập nhật người dùng
+     */
+    public function setPasswordHashAttribute($value)
+    {
+        // Kiểm tra xem giá trị mật khẩu có tồn tại hay không, nếu có thì mã hóa
+        if ($value) {
+            $this->attributes['PasswordHash'] = bcrypt($value); // Mã hóa mật khẩu với bcrypt
+        }
+    }
+
+    /**
+     * Phương thức kiểm tra vai trò
+     */
+    public function isRole($role)
+    {
+        return $this->RoleID === $role;
+    }
+}

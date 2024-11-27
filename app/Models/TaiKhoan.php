@@ -50,7 +50,7 @@ class TaiKhoan extends Model
     {
         $this->attributes['MatKhau'] = bcrypt($value); // Mã hóa mật khẩu với bcrypt
     }
-
+    
     /**
      * Phương thức kiểm tra vai trò
      */
