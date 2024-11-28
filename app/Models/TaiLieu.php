@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TaiLieu extends Model
 {
     // Tên bảng trong cơ sở dữ liệu
-    protected $table = 'tailieu';
+    protected $table = 'TaiLieu';
     protected $primaryKey = 'MaTaiLieu';
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [

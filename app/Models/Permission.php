@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     // Tên bảng tương ứng trong cơ sở dữ liệu
-    protected $table = 'permissions';
+    protected $table = 'Permissions';
 
     // Khóa chính của bảng
     protected $primaryKey = 'PermissionID';

@@ -64,7 +64,7 @@ use Illuminate\Database\Eloquent\Model;
 class DoAn extends Model
 {
     // Tên bảng trong cơ sở dữ liệu
-    protected $table = 'doan';
+    protected $table = 'DoAn';
     protected $primaryKey = 'MaDoAn';
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [

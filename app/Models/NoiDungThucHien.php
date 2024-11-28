@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class NoiDungThucHien extends Model
 {
     // Tên bảng tương ứng trong cơ sở dữ liệu
-    protected $table = 'noidungthuchien';
+    protected $table = 'NoiDungThucHien';
 
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [

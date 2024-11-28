@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class GiangVien extends Model
 {
     // Tên bảng tương ứng trong cơ sở dữ liệu
-    protected $table = 'giangvien';
+    protected $table = 'GiangVien';
     protected $primaryKey = 'MaGiangVien';
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [

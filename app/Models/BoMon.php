@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BoMon extends Model
 {
     // Tên bảng tương ứng trong cơ sở dữ liệu
-    protected $table = 'bomon';
+    protected $table = 'BoMon';
     protected $primaryKey = 'MaBoMon';
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [
