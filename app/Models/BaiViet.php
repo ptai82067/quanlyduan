@@ -55,10 +55,20 @@ class BaiViet extends Model
     /**
      * Phương thức để load các quan hệ khi truy vấn
      */
+
+     public function danhMuc()
+     {
+         return $this->belongsToMany(
+             DanhMucBaiViet::class,     // Model liên quan
+             'BaiVietDanhMuc',          // Tên bảng trung gian
+             'MaBaiViet',               // Khóa ngoại trong bảng trung gian trỏ đến bảng BaiViet
+             'MaDanhMuc'                // Khóa ngoại trong bảng trung gian trỏ đến bảng DanhMucBaiViet
+         );
+     }
+
     protected $hidden = ['MaNguoiTao'];
     public static function relationsToLoad()
     {
-        return ['giangVien']; // Load thông tin giảng viên khi truy vấn
+        return ['giangVien', 'danhMuc']; // Load thông tin giảng viên và danh mục khi truy vấn
     }
 }
-

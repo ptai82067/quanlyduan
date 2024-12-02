@@ -44,6 +44,8 @@ class User extends Model
             'RoleID' => 'required|exists:Roles,RoleID',     // Vai trò bắt buộc phải tồn tại trong bảng Roles
         ];
     }
+    protected $hidden = [
+        'RoleID'];
 
     /**
      * Quan hệ liên quan được load mặc định.

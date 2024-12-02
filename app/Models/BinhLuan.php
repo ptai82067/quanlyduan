@@ -29,7 +29,7 @@ class BinhLuan extends Model
         return [
             'MaBaiViet' => 'required|exists:BaiViet,MaBaiViet', // Phải tồn tại trong bảng BaiViet
             'NoiDung' => 'required|string', // Nội dung bình luận
-            'MaNguoiBinhLuan' => 'required|exists:GiangVien,MaGiangVien', // Phải tồn tại trong bảng GiangVien (hoặc SinhVien nếu là sinh viên)
+            'MaNguoiBinhLuan' => 'nullable|numeric', // Phải tồn tại trong bảng GiangVien (hoặc SinhVien nếu là sinh viên)
             'NgayBinhLuan' => 'required|date', // Phải là một ngày hợp lệ
         ];
     }

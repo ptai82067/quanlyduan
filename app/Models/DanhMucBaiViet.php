@@ -33,6 +33,16 @@ class DanhMucBaiViet extends Model
      */
     public function baiViet()
     {
-        return $this->hasMany(BaiViet::class, 'MaDanhMuc', 'MaDanhMuc');
+        return $this->belongsToMany(
+            BaiViet::class,            // Model liên quan
+            'BaiVietDanhMuc',          // Tên bảng trung gian
+            'MaDanhMuc',               // Khóa ngoại trong bảng trung gian trỏ đến bảng DanhMucBaiViet
+            'MaBaiViet'                // Khóa ngoại trong bảng trung gian trỏ đến bảng BaiViet
+        );
     }
+    public static function relationsToLoad()
+    {
+        return ['baiViet']; // Tải thông tin bài viết khi truy vấn
+    }
+
 }

@@ -34,6 +34,7 @@ class NoiDungThucHien extends Model
     /**
      * Quy tắc xác thực khi thêm hoặc cập nhật dữ liệu
      */
+    protected $hidden = ['SinhVienID'];
     public static function getValidationRules()
     {
         return [

@@ -9,6 +9,7 @@ class GiangVien extends Model
     // Tên bảng tương ứng trong cơ sở dữ liệu
     protected $table = 'GiangVien';
     protected $primaryKey = 'MaGiangVien';
+
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [
         'HoTen',
@@ -16,6 +17,8 @@ class GiangVien extends Model
         'SDT',
         'MaBoMon',
         'CanBoKhoa',
+        'HanMucHD',       // Thêm thuộc tính HanMucHD
+        'SoLuongHuongDan' // Thêm thuộc tính SoLuongHuongDan
     ];
 
     // Tắt timestamps nếu không sử dụng `created_at` và `updated_at`
@@ -41,6 +44,8 @@ class GiangVien extends Model
             'SDT' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|max:15', // Số điện thoại có thể rỗng, phải hợp lệ và tối đa 15 ký tự
             'MaBoMon' => 'nullable|exists:BoMon,MaBoMon', // Mã bộ môn có thể rỗng, nếu có phải tồn tại trong bảng BoMon
             'CanBoKhoa' => 'nullable|boolean',       // Cán bộ khoa có thể rỗng, chỉ nhận 0 (Không) hoặc 1 (Có)
+            'HanMucHD' => 'nullable|numeric|min:0',
+            'SoLuongHuongDan' => 'nullable|numeric|min:0', // Số lượng hướng dẫn không vượt quá hạn mức
         ];
     }
 
@@ -57,4 +62,3 @@ class GiangVien extends Model
         return ['boMon']; // Load thông tin bộ môn khi truy vấn giảng viên
     }
 }
-

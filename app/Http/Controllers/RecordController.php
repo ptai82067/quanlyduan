@@ -44,7 +44,7 @@ class RecordController extends Controller
             if (!$record) {
                 return response()->json(['error' => 'Record not found'], 404);
             }
-            event(new RecordUpdate($table, 'show', $record));
+           
             return response()->json($record);
             // return response()->json($this->transformRecord($record));
         } catch (\Exception $e) {
@@ -75,7 +75,7 @@ class RecordController extends Controller
 
             // Tạo bản ghi mới
             $record = $modelClass::create($request->all());
-            event(new RecordUpdate($table, 'created', $record));
+            event(new RecordUpdate($table, 'show', $record));
             // RecordUpdated::dispatch($table, 'created', $record);
 
             return response()->json($record, 201);

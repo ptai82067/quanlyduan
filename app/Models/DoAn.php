@@ -1,62 +1,4 @@
 <?php
-
-// namespace App\Models;
-
-// use Illuminate\Database\Eloquent\Model;
-
-// class DoAn extends Model
-// {
-//     // Tên bảng trong cơ sở dữ liệu
-//     protected $table = 'DoAn';
-//     protected $primaryKey = 'MaDoAn';
-//     // Các thuộc tính có thể gán giá trị hàng loạt
-//     protected $fillable = [
-//         'TenDoAn',
-//         'MoTa',
-//         'DoKho',
-//         'MaNguoiTao',
-//         'MaNguoiDuyet',
-//         'MaNguoiKhoaDoAn',
-//         'NgayTao',
-//         'NgayDuyet',
-//     ];
-
-//     // Tắt timestamps nếu không sử dụng các cột `created_at` và `updated_at`
-//     public $timestamps = false;
-
-//     /**
-//      * Phương thức để xác định mối quan hệ với bảng TaiLieu.
-//      */
-//     public function taiLieu()
-//     {
-//         return $this->hasMany(TaiLieu::class, 'MaDoAn', 'MaDoAn');
-//     }
-
-//     /**
-//      * Quy tắc xác thực khi thêm hoặc cập nhật dữ liệu
-//      */
-//     public static function getValidationRules()
-//     {
-//         return [
-//             'TenDoAn' => 'required|string|max:191',
-//             'MoTa' => 'nullable|string',
-//             'DoKho' => 'required|integer|min:1|max:10', // Độ khó phải là số nguyên từ 1 đến 10
-//             'MaNguoiTao' => 'required|exists:GiangVien,MaGiangVien', // Phải tồn tại trong bảng GiangVien
-//             'MaNguoiDuyet' => 'nullable|exists:GiangVien,MaGiangVien', // Có thể rỗng, nếu có phải tồn tại
-//             'MaNguoiKhoaDoAn' => 'nullable|exists:GiangVien,MaGiangVien',
-//             'NgayTao' => 'required|date', // Phải là một ngày hợp lệ
-//             'NgayDuyet' => 'nullable|date',
-//         ];
-//     }
-
-//     /**
-//      * Phương thức để load các quan hệ khi truy vấn
-//      */
-//     public static function relationsToLoad()
-//     {
-//         return ['taiLieu']; // Load thông tin tài liệu liên quan khi truy vấn
-//     }
-// }
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -66,6 +8,7 @@ class DoAn extends Model
     // Tên bảng trong cơ sở dữ liệu
     protected $table = 'DoAn';
     protected $primaryKey = 'MaDoAn';
+
     // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [
         'TenDoAn',
@@ -76,6 +19,8 @@ class DoAn extends Model
         'MaNguoiKhoaDoAn',
         'NgayTao',
         'NgayDuyet',
+        'HanMucDK',       // Thêm thuộc tính HanMucDK
+        'SoLuongDK',      // Thêm thuộc tính SoLuongDK
     ];
 
     // Tắt timestamps nếu không sử dụng các cột `created_at` và `updated_at`
@@ -127,6 +72,8 @@ class DoAn extends Model
             'MaNguoiKhoaDoAn' => 'nullable|exists:GiangVien,MaGiangVien',
             'NgayTao' => 'required|date', // Phải là một ngày hợp lệ
             'NgayDuyet' => 'nullable|date',
+            'HanMucDK' => 'nullable|integer|min:0',  // Hạn mức đăng ký có thể rỗng, phải là số nguyên >= 0
+            'SoLuongDK' => 'nullable|integer|min:0', // Số lượng đăng ký không vượt quá hạn mức
         ];
     }
 

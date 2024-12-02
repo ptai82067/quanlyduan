@@ -15,7 +15,7 @@ class TaiLieu extends Model
         'LinkTaiLieu',
         'MaDoAn',
     ];
-
+    protected $hidden = ['MaDoAn'];
     // Tắt timestamps nếu không sử dụng các cột `created_at` và `updated_at`
     public $timestamps = false;
 
