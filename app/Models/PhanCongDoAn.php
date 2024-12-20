@@ -55,7 +55,7 @@ class PhanCongDoAn extends Model
             'MaDoAn' => 'required|exists:DoAn,MaDoAn', // Phải tồn tại trong bảng DoAn
             'MaSinhVien' => 'required|exists:SinhVien,MaSinhVien', // Phải tồn tại trong bảng SinhVien
             'MaGiangVien' => 'required|exists:GiangVien,MaGiangVien', // Phải tồn tại trong bảng GiangVien
-            'NgayPhanCong' => 'required|string', // Phải là ngày hợp lệ
+            'NgayPhanCong' => 'required|date', // Phải là ngày hợp lệ
             'GhiChu' => 'nullable|string|max:191', // Có thể rỗng, tối đa 191 ký tự
         ];
     }
