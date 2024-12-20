@@ -43,7 +43,7 @@ class SinhVien extends Model
     {
         return [
             'HoTen' => 'required|string|max:191',     // Họ tên không được rỗng, dạng chuỗi, tối đa 191 ký tự
-            'NgaySinh' => 'required|date',           // Ngày sinh không được rỗng, dạng ngày hợp lệ
+            'NgaySinh' => 'required|string',           // Ngày sinh không được rỗng, dạng ngày hợp lệ
             'GioiTinh' => 'required|boolean',        // Giới tính không được rỗng, chỉ nhận 0 (Nữ) hoặc 1 (Nam)
             'MaLop' => 'nullable|exists:Lop,MaLop',  // Mã lớp có thể rỗng, nếu có phải tồn tại trong bảng Lop
             'Email' => 'nullable|email|max:191',     // Email có thể rỗng, nếu có phải hợp lệ và tối đa 191 ký tự

@@ -70,8 +70,8 @@ class DoAn extends Model
             'MaNguoiTao' => 'required|exists:GiangVien,MaGiangVien', // Phải tồn tại trong bảng GiangVien
             'MaNguoiDuyet' => 'nullable|exists:GiangVien,MaGiangVien', // Có thể rỗng, nếu có phải tồn tại
             'MaNguoiKhoaDoAn' => 'nullable|exists:GiangVien,MaGiangVien',
-            'NgayTao' => 'required|date', // Phải là một ngày hợp lệ
-            'NgayDuyet' => 'nullable|date',
+            'NgayTao' => 'required|string', // Phải là một ngày hợp lệ
+            'NgayDuyet' => 'nullable|string',
             'HanMucDK' => 'nullable|integer|min:0',  // Hạn mức đăng ký có thể rỗng, phải là số nguyên >= 0
             'SoLuongDK' => 'nullable|integer|min:0', // Số lượng đăng ký không vượt quá hạn mức
         ];
