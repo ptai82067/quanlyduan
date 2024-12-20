@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Khoa extends Model
 {
     // Tên bảng tương ứng trong database
-    protected $table = 'khoa';
+    protected $table = 'Khoa';
     protected $primaryKey = 'MaKhoa';
     // Các trường có thể gán mass assignment
     protected $fillable = [
