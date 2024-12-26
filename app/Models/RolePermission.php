@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RolePermission extends Model
 {
-    protected $table = 'RolePermissions';
+    protected $table = 'Rolepermissions';
     protected $primaryKey = 'RolePermissionID';
     public $timestamps = false;
 
